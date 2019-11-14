@@ -1,0 +1,12 @@
+{
+  "name": "invest-valid-serverless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lzkmylz <lzkmylz@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^3.1.0",
+    "aws-sdk": "^2.556.0",
+    "underscore": "^1.9.1"
+  }
+}
