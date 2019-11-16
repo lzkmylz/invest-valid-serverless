@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions: 
+      nodejs: 10 
+    commands:
+      - echo install serverless
+      - npm install -g serverless
+  pre_build:
+    commands:
+      - echo build resources
+      - npm install
+  build:
+    commands:
+      - echo Build to CloudFormation
+      - serverless deploy
+  post_build:
+    commands:
+      - echo Deployment completed 

@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports.update = async event => {
+
+  console.log(event.body);
   return {
     statusCode: 200,
     body: JSON.stringify(
