@@ -3,13 +3,13 @@ service: invest-valid-serverless
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: prod
   region: ap-southeast-1
   memorySize: 128
   timeout: 5
 
 plugins:
   - serverless-mocha-plugin
+  - serverless-offline
 
 functions:
   updateAvatar:
