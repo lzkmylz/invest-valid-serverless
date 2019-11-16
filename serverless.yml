@@ -9,7 +9,15 @@ provider:
   timeout: 5
   endpointType: regionsl
 
+plugins:
+  - serverless-mocha-plugin
+
 functions:
-  hello:
-    handler: handler.hello
+  updateAvatar:
+    handler: UserAttr/updateAvatar.update
+    events: 
+      - http:
+          path: userAttr/updateAvatar
+          method: post
+          cors: true
 
