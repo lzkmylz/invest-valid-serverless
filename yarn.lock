@@ -379,6 +379,21 @@ aws-sdk@^2.4.0, aws-sdk@^2.491.0:
     uuid "^3.3.2"
     xml2js "^0.4.19"
 
+aws-sdk@^2.490.0:
+  version "2.573.0"
+  resolved "https://registry.npm.taobao.org/aws-sdk/download/aws-sdk-2.573.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faws-sdk%2Fdownload%2Faws-sdk-2.573.0.tgz#e4d35b6ac7e039eda2b1a365574380521b87e065"
+  integrity sha1-5NNbasfgOe2isaNlV0OAUhuH4GU=
+  dependencies:
+    buffer "^4.9.1"
+    events "^1.1.1"
+    ieee754 "^1.1.13"
+    jmespath "^0.15.0"
+    querystring "^0.2.0"
+    sax "^1.2.1"
+    url "^0.10.3"
+    uuid "^3.3.2"
+    xml2js "^0.4.19"
+
 aws-sdk@^2.556.0:
   version "2.556.0"
   resolved "https://registry.npm.taobao.org/aws-sdk/download/aws-sdk-2.556.0.tgz?cache=0&sync_timestamp=1571942203072&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faws-sdk%2Fdownload%2Faws-sdk-2.556.0.tgz#5c96bacf7942b530b20c94f3307e6650a97fd7be"
@@ -509,7 +524,7 @@ chai@^4.2.0:
     pathval "^1.1.0"
     type-detect "^4.0.5"
 
-chalk@^2.0.1, chalk@^2.4.2:
+chalk@^2.0.1, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npm.taobao.org/chalk/download/chalk-2.4.2.tgz?cache=0&sync_timestamp=1573282918610&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fchalk%2Fdownload%2Fchalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ=
@@ -1548,6 +1563,14 @@ semver@^6.2.0:
   version "6.3.0"
   resolved "https://registry.npm.taobao.org/semver/download/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha1-7gpkyK9ejO6mdoexM3YeG+y9HT0=
+
+serverless-domain-manager@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npm.taobao.org/serverless-domain-manager/download/serverless-domain-manager-3.3.0.tgz#758b928f5a146b3e925e5cd9d6e0043879805eee"
+  integrity sha1-dYuSj1oUaz6SXlzZ1uAEOHmAXu4=
+  dependencies:
+    aws-sdk "^2.490.0"
+    chalk "^2.4.1"
 
 serverless-mocha-plugin@^1.11.0:
   version "1.11.0"

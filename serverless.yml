@@ -6,10 +6,20 @@ provider:
   region: ap-southeast-1
   memorySize: 128
   timeout: 5
+  endpointType: regional
 
 plugins:
   - serverless-mocha-plugin
   - serverless-offline
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: api.investvalid.com
+    basePath: 'v1'
+    stage: prod
+    certificateName: api.investvalid.com
+    createRoute53Record: true
 
 functions:
   updateAvatar:
