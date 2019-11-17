@@ -5,7 +5,7 @@ provider:
   runtime: nodejs10.x
   region: ap-southeast-1
   memorySize: 128
-  timeout: 60
+  timeout: 300
   endpointType: regional
 
 plugins:
@@ -23,7 +23,7 @@ custom:
 
 functions:
   updateAvatar:
-    handler: UserAttr/updateAvatar.update
+    handler: UserAttr/UpdateAvatar.update
     events: 
       - http:
           path: userAttr/updateAvatar
