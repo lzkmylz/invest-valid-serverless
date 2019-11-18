@@ -14,6 +14,16 @@ plugins:
   - serverless-domain-manager
 
 custom:
+  allowedHeaders: 
+    - Accept 
+    - Content-Type 
+    - Content-Length 
+    - Authorization 
+    - X-Amz-Date 
+    - X-Api-key 
+    - X-Amz-Security-Token 
+    - X-Amz-User-Agent 
+
   customDomain:
     domainName: api.investvalid.com
     basePath: 'v1'
@@ -28,5 +38,7 @@ functions:
       - http:
           path: userAttr/updateAvatar
           method: post
-          cors: true
+          cors:
+            origin: '*' 
+            headers: ${self:custom.allowedHeaders}
 
