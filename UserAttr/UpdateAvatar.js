@@ -5,6 +5,10 @@ module.exports.update = async event => {
   console.log(event.body);
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+    },
     body: JSON.stringify(
       {
         message: 'Go Serverless v2.0! Your function executed successfully!',
