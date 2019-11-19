@@ -7,6 +7,15 @@ provider:
   memorySize: 128
   timeout: 300
   endpointType: regional
+  environment:
+    AvatarS3Bucket:
+      - Ref: AvatarS3Bucket
+  iamRoleStatments:
+    - Effect: Allow 
+      Action:
+        - 's3:*'
+      Resource:
+        - Ref: AvatarS3Bucket
 
 plugins:
   - serverless-mocha-plugin
@@ -43,3 +52,22 @@ functions:
             origin: '*' 
             headers: ${self:custom.allowedHeaders}
 
+resources:
+  Resources:
+    AvatarS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: invest-valid-serverless-avatar-bucket
+        CorsConfiguration:
+          -
+            AllowedOrigins:
+              - '*'
+            AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - GET
+              - PUT
+              - POST
+              - DELETE
+              - HEAD
+            MaxAge: 3000

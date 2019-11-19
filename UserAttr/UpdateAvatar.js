@@ -1,8 +1,14 @@
 'use strict';
+const multipart = require('aws-lambda-multipart-parser');
 
 module.exports.update = async event => {
-
-  console.log(event.body);
+  const parsedData = multipart.parse(event, true);
+  let filename = parsedData.file.filename;
+  let data = parsedData.file.content;
+  let dataType = parsedData.file.contentType;
+  const s3BucketName = process.env.AvatarS3Bucket;
+  
+  console.log(filename, dataType, data, s3BucketName);
   return {
     statusCode: 200,
     headers: {
