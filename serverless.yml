@@ -62,16 +62,3 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: invest-valid-serverless-avatar-bucket
-        CorsConfiguration:
-          -
-            AllowedOrigins:
-              - '*'
-            AllowedHeaders:
-              - '*'
-            AllowedMethods:
-              - GET
-              - PUT
-              - POST
-              - DELETE
-              - HEAD
-            MaxAge: 3000
