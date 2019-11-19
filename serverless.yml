@@ -61,4 +61,4 @@ resources:
     AvatarS3Bucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: invest-valid-serverless-avatar-bucket
+        BucketName: ${self:service}-avatar-${opt:stage, self:provider.stage}
