@@ -5,6 +5,7 @@ AWS.config.update({ region: 'ap-southeast-1' });
 var s3 = new AWS.S3();
 
 module.exports.update = async event => {
+  console.log(event.body)
   let encodedImage =JSON.parse(event.body);
   let decodedImage = Buffer.from(encodedImage.file, 'base64');
   let format = encodedImage.format;
