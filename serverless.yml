@@ -57,6 +57,16 @@ functions:
           cors:
             origin: '*' 
             headers: ${self:custom.allowedHeaders}
+  
+  getAvatar:
+    handler: UserAttr/GetAvatar.get
+    events:
+      - http:
+          path: userAttr/getAvatar
+          method: get
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
 
 resources:
   Resources:
