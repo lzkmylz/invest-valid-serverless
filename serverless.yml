@@ -9,7 +9,7 @@ provider:
   endpointType: regional
   environment:
     AvatarS3Bucket: ${self:custom.AvatarS3Bucket}
-  iamRoleStatments:
+  iamRoleStatements:
     - Effect: 'Allow'
       Action:
         - 's3:PutObject'
