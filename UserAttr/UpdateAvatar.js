@@ -12,6 +12,7 @@ module.exports.update = async event => {
   const s3BucketName = process.env.AvatarS3Bucket;
 
   let imgSaveName = uuidv4() + '.' + format;
+  console.log(imgSaveName, filetype, format)
   let params = {
     Bucket: s3BucketName,
     Key: imgSaveName,
