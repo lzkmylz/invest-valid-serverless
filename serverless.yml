@@ -10,16 +10,15 @@ provider:
   environment:
     AvatarS3Bucket: ${self:custom.AvatarS3Bucket}
   iamRoleStatments:
-    - Effect: Allow 
+    - Effect: 'Allow'
       Action:
-        - s3:GetObject
-        - s3:PutObject
+        - 's3:PutObject'
       Resource:
-        - "Fn::Join":
-          - ""
-          - - "arn:aws:s3:::"
+        Fn::Join:
+          - ''
+          - - 'arn:aws:s3:::'
             - Ref: AvatarS3Bucket
-            - "/*"
+            - '/*'
 
 plugins:
   - serverless-mocha-plugin
