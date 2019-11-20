@@ -19,7 +19,7 @@ provider:
           - ""
           - - "arn:aws:s3:::"
             - Ref: AvatarS3Bucket
-            - "*"
+            - "/*"
 
 plugins:
   - serverless-mocha-plugin
