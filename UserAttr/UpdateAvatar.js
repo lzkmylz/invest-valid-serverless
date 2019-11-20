@@ -11,6 +11,7 @@ module.exports.update = async event => {
   let dataType = parsedData.file.contentType.split('/');
   let imgFormat = dataType[1];
   const s3BucketName = process.env.AvatarS3Bucket;
+  console.log(process.env)
 
   if(dataType[0] != 'image') {
     return {
@@ -31,21 +32,9 @@ module.exports.update = async event => {
     Key: imgSaveName,
     Body: data
   };
-  s3.putObject(params, (err, data) => {
-    if(err) {
-      return {
-        statusCode: err.statusCode,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
-        },
-        body: JSON.stringify({ 
-          error: err.name ? err.name : "Exception", 
-          message: err.message ? err.message : "Unknown error" 
-        }),
-      }
-    }
-    // success
+  try {
+    let data = await s3.putObject(params).promise();
+      // success
     return {
       statusCode: 200,
       headers: {
@@ -53,8 +42,21 @@ module.exports.update = async event => {
         'Access-Control-Allow-Credentials': true,
       },
       body: JSON.stringify({
-          fileKey: imgSaveName,
+        data: data
       }),
     };
-  });
+  } catch(err) {
+    console.log(err);
+    return {
+      statusCode: err.statusCode, 
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify({ 
+        error: err.name ? err.name : "Exception", 
+        message: err.message ? err.message : "Unknown error" 
+      }) 
+    };
+  }
 };
