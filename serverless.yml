@@ -12,7 +12,8 @@ provider:
   iamRoleStatments:
     - Effect: Allow 
       Action:
-        - 's3:*'
+        - s3:GetObject
+        - s3:PutObject
       Resource:
         Fn::Join:
           - ''
