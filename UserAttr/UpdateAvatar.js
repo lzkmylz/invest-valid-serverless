@@ -1,39 +1,23 @@
 'use strict';
-const multipart = require('aws-lambda-multipart-parser');
 const uuidv4 = require('uuid/v4');
 const AWS = require('aws-sdk');
 AWS.config.update({ region: 'ap-southeast-1' });
 var s3 = new AWS.S3();
 
 module.exports.update = async event => {
-  const parsedData = multipart.parse(event, true);
-  let data = parsedData.file.content;
-  let dataType = parsedData.file.contentType.split('/');
-  let imgFormat = dataType[1];
+  let encodedImage =JSON.parse(event.body);
+  let decodedImage = Buffer.from(encodedImage.file, 'base64');
+  let format = encodedImage.format;
   const s3BucketName = process.env.AvatarS3Bucket;
-  console.log(process.env)
 
-  if(dataType[0] != 'image') {
-    return {
-      statusCode: 400,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify({
-          message: 'Upload file is not image file!',
-      }),
-    }
-  }
-
-  let imgSaveName = uuidv4() + '.' + imgFormat;
+  let imgSaveName = uuidv4() + '.' + format;
   let params = {
     Bucket: s3BucketName,
     Key: imgSaveName,
-    Body: data
+    Body: decodedImage
   };
   try {
-    let data = await s3.putObject(params).promise();
+    let result = await s3.putObject(params).promise();
       // success
     return {
       statusCode: 200,
@@ -42,7 +26,7 @@ module.exports.update = async event => {
         'Access-Control-Allow-Credentials': true,
       },
       body: JSON.stringify({
-        data: data
+        data: imgSaveName
       }),
     };
   } catch(err) {
