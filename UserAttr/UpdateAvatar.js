@@ -5,19 +5,19 @@ AWS.config.update({ region: 'ap-southeast-1' });
 var s3 = new AWS.S3();
 
 module.exports.update = async event => {
-  let encodedImage =JSON.parse(event.body);
-  let decodedImage = Buffer.from(encodedImage.file, 'base64');
-  let filetype = encodedImage.filetype;
-  let format = filetype.split('/')[1];
-  const s3BucketName = process.env.AvatarS3Bucket;
-
-  let imgSaveName = uuidv4() + '.' + format;
-  let params = {
-    Bucket: s3BucketName,
-    Key: imgSaveName,
-    Body: decodedImage
-  };
   try {
+    let encodedImage =JSON.parse(event.body);
+    let decodedImage = Buffer.from(encodedImage.file, 'base64');
+    let filetype = encodedImage.filetype;
+    let format = filetype.split('/')[1];
+    const s3BucketName = process.env.AvatarS3Bucket;
+
+    let imgSaveName = uuidv4() + '.' + format;
+    let params = {
+      Bucket: s3BucketName,
+      Key: imgSaveName,
+      Body: decodedImage
+    };
     let result = await s3.putObject(params).promise();
       // success
     return {
