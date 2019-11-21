@@ -10,9 +10,20 @@ provider:
   environment:
     AvatarS3Bucket: ${self:custom.AvatarS3Bucket}
   iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:ListBucket
+      Resource:
+        Fn::Join:
+          - ''
+          - - 'arn:aws:s3:::'
+            - Ref: AvatarS3Bucket
+            - '/*'
     - Effect: 'Allow'
       Action:
-        - 's3:*'
+        - 's3:PutObject'
+        - 's3:GetObject'
+        - 's3:DeleteObject'
       Resource:
         Fn::Join:
           - ''
