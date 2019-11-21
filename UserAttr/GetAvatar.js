@@ -6,34 +6,18 @@ var s3 = new AWS.S3();
 module.exports.get = async event => {
   let avatarKey = event.pathParameters.avatarName;
   const s3BucketName = process.env.AvatarS3Bucket;
-  console.log(avatarKey, s3BucketName)
-  try {
-    let params = {
-      Bucket: s3BucketName, 
-      Key: avatarKey,
-    };
-    let result = await s3.getObject(params).promise();
+  let params = {
+    Bucket: s3BucketName, 
+    Key: avatarKey,
+  };
+  let result = await s3.getObject(params).promise();
       // success
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: result
-    };
-  } catch(err) {
-    console.log(err);
-    return {
-      statusCode: err.statusCode, 
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify({ 
-        error: err.name ? err.name : "Exception", 
-        message: err.message ? err.message : "Unknown error" 
-      }) 
-    };
-  }
+  return {
+    statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: result
+  };
 };
