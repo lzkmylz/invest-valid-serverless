@@ -12,6 +12,7 @@ module.exports.get = async event => {
       Bucket: s3BucketName, 
       Key: avatarKey, 
     };
+    console.log(params)
     let result = await s3.getObject(params).promise();
       // success
     return {
