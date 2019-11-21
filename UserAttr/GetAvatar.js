@@ -15,7 +15,9 @@ module.exports.get = async event => {
   s3.getObject(params, (err, data) => {
     if(err) {
       console.log(err);
+      return;
     }
+    console.log(data);
     return {
       statusCode: 200,
       headers: {
