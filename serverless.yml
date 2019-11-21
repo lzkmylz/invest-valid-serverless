@@ -18,7 +18,7 @@ provider:
           - ''
           - - 'arn:aws:s3:::'
             - Ref: AvatarS3Bucket
-            - '/*'
+            - ''
     - Effect: 'Allow'
       Action:
         - 's3:PutObject'
