@@ -62,7 +62,7 @@ functions:
     handler: UserAttr/GetAvatar.get
     events:
       - http:
-          path: userAttr/getAvatar
+          path: userAttr/getAvatar/{avatarName}
           method: get
           cors:
             origin: '*'

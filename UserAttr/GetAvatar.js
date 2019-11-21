@@ -4,7 +4,7 @@ AWS.config.update({ region: 'ap-southeast-1' });
 var s3 = new AWS.S3();
 
 module.exports.get = async event => {
-  let avatarKey = event.body.key;
+  let avatarKey = event.pathParameters.avatarName;
   const s3BucketName = process.env.AvatarS3Bucket;
 
   let params = {
