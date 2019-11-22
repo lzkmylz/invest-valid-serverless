@@ -15,6 +15,7 @@ module.exports.get = async event => {
   console.log(data);
   return {
     statusCode: 200,
+    isBase64Encoded: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
