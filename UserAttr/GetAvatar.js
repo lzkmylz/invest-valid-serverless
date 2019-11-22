@@ -12,7 +12,6 @@ module.exports.get = async event => {
   };
   let result = await s3.getObject(params).promise();
   let data = JSON.stringify(result.Body.toString('base64'));
-  console.log(data);
   return {
     statusCode: 200,
     headers: {
