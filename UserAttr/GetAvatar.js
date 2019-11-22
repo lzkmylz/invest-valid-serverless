@@ -11,9 +11,8 @@ module.exports.get = async event => {
     Key: avatarKey,
   };
   let result = await s3.getObject(params).promise();
-  let data = await JSON.stringify(result.Body.toString('base64'));
-  console.log(data);
-  return {
+  let data = result.Body.toString('base64');
+  return JSON.stringify({
     statusCode: 200,
     isBase64Encoded: true,
     headers: {
@@ -23,5 +22,5 @@ module.exports.get = async event => {
     body: {
       data: data
     }
-  };
+  });
 };
