@@ -11,14 +11,16 @@ module.exports.get = async event => {
     Key: avatarKey,
   };
   let result = await s3.getObject(params).promise();
+  let data = JSON.stringify(result.Body.toString('base64'));
+  console.log(data);
   return {
     statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
     },
-    body: JSON.stringify({
-      data: result.Body.toString('base64')
-    }),
+    body: {
+      data: data
+    }
   };
 };
