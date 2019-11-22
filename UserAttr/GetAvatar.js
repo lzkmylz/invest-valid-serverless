@@ -12,6 +12,7 @@ module.exports.get = async event => {
   };
   let result = await s3.getObject(params).promise();
   let data = result.Body.toString('base64');
+  console.log(data);
   return JSON.stringify({
     statusCode: 200,
     isBase64Encoded: true,
