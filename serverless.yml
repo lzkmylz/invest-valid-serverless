@@ -77,16 +77,6 @@ functions:
           cors:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
-  
-  similarityCompute:
-    handler: Statistics/SimilarityCompute.post
-    events:
-      - http:
-          path: statistics/similarityCompute
-          method: post
-          cors:
-            origin: '*'
-            headers: ${self:custom.allowedHeaders}
 
 resources:
   Resources:
