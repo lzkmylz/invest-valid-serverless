@@ -58,6 +58,16 @@ custom:
     createRoute53Record: true
 
 functions:
+  getIndexData:
+    handler: StockData/getIndexData.get
+    events:
+      - http:
+          path: stockData/getIndexData
+          method: post
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
+
   updateAvatar:
     handler: UserAttr/UpdateAvatar.update
     events: 
