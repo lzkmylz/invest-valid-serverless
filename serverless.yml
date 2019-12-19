@@ -69,6 +69,17 @@ functions:
           cors:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
+  getAStockData:
+    handler: StockData/getAStockData.get
+    environment:
+      TUSHARE_TOKEN: ${env:TUSHARE_TOKEN}
+    events:
+      - http:
+          path: stockData/getAStockData
+          method: post
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
 
   updateAvatar:
     handler: UserAttr/UpdateAvatar.update
