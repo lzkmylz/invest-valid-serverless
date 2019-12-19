@@ -60,6 +60,8 @@ custom:
 functions:
   getIndexData:
     handler: StockData/getIndexData.get
+    environment:
+      TUSHARE_TOKEN: ${env:TUSHARE_TOKEN}
     events:
       - http:
           path: stockData/getIndexData
